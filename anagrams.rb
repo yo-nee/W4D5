@@ -2,16 +2,26 @@ require "byebug"
 
 # Phase 1 Anagram # permuation , factorial)(n!)
     def first_anagram?(str, str_2) #str = "abc"   str2 = "cab"  
-    #     variations = str.split("").permutation.to_a
-    #     variations.include?(str_2.split(""))
-    # end
-        first_anagram?(str).include?(str2)
+        variations = str.split("").permutation.to_a
+        variations.include?(str_2.split(""))
     end
-p first_anagram?("abc", "cba")
+
 
 
 # Phase 2 Anagram 
+    def second_anagram?(str, str_2)
+        arr1 = str.split("")
+        arr2 = str_2.split("")
+        if arr1.length == arr2.length
 
+        arr1.each do |ele|
+            arr2.delete(ele) if !arr2.find_index(ele).nil?
+        end
+
+        arr2.empty?
+    end
+
+p second_anagram?("abc", "cb")
 
 # Phase 3 Anagram 
 
