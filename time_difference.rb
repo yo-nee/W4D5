@@ -37,20 +37,40 @@
 #  list = [-5, -1, -3]
 #  largest_contiguous_subsum(list) # => -1 (from [-1])
 
-#phase 1  #is this then polynomial O(n^k) or quadratic O(n^2) * 
+# phase 1  #is this then polynomial O(n^3) 
 
 def largest_contiguous_subsum_1(list)
-    subars = []                             #constant 
-        (0...list.length).each do |i|       #linear
-            (0...list.length).each do |j|   #quadratic 0(n^2)
-                if i != j
-                    subars << list[i..j]
-                end
+    subars = []                                         #constant 
+        (0...list.length).each do |i|                   #linear n
+            ((i + 1)...(list.length-1)).each do |j|     #quadratic 0(n^2)
+                subars << list[i..j]      #n / 2 , 2(constant) is removed so it's n^3
             end
         end
+
     max_sum = subars.first.sum
-        subars.each {|sub| max_sum = sub.sum if sub.sum > max_sum } # linear n^2
-        max_sum
+    subars.each {|sub| max_sum = sub.sum if sub.sum > max_sum } # linear n^3
+    max_sum
 end
 
 
+# phase 2
+
+#  list = [2, 3, -6, 7, -6, 7]
+#  largest_contiguous_subsum(list) # => 8 (from [7, -6, 7] 
+
+    def largest_contiguous_subsum_2(list)
+        largest_sum = 0
+        current_sum = 0
+
+        i = 0
+        while i < list.length
+            # if we add next index and it's greater than current, it becomes current
+            # check if current > largest, largest = current
+            # add next index, check
+            # if sum is not greater than current, then compare to largest
+            # if not greater than largest, keep largest and current sets to 0
+            current_sum = (list.first + list[i]) if (list.first + list[i]) > current_sum
+            largest_sum = current_sum if current_sum < largest_sum
+            i += 1
+        end
+    end
