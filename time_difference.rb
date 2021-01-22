@@ -27,3 +27,15 @@
     end
 
     p my_min_2([ 0, 3, 5, 4, -5, 10, 1, 90 ])
+
+# Largest Contiguous Sub-sum
+
+
+
+
+#  list = [5, 3, -7]
+#  largest_contiguous_subsum(list) # =>  
+#  list = [2, 3, -6, 7, -6, 7]
+#  largest_contiguous_subsum(list) # => 8 (from [7, -6, 7] 
+#  list = [-5, -1, -3]
+#  largest_contiguous_subsum(list) # => -1 (from [-1])
