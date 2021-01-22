@@ -1,3 +1,4 @@
+require "byebug"
 #Phase 1 # quadratic 0(n^2)
 
     def my_min_1(list)
@@ -58,19 +59,35 @@ end
 #  list = [2, 3, -6, 7, -6, 7]
 #  largest_contiguous_subsum(list) # => 8 (from [7, -6, 7] 
 
-    def largest_contiguous_subsum_2(list)
-        largest_sum = 0
-        current_sum = 0
 
-        i = 0
-        while i < list.length
-            # if we add next index and it's greater than current, it becomes current
+   # if we add next index and it's greater than current, it becomes current
             # check if current > largest, largest = current
             # add next index, check
             # if sum is not greater than current, then compare to largest
             # if not greater than largest, keep largest and current sets to 0
-            current_sum = (list.first + list[i]) if (list.first + list[i]) > current_sum
-            largest_sum = current_sum if current_sum < largest_sum
+
+    def largest_contiguous_subsum_2(list) #linear
+    #    debugger
+        largest_sum = list.first    # 8
+        current_sum = 0     # 8
+
+        i = 0
+        while i < list.length
+            current_sum += list[i]
+
+            if current_sum > largest_sum
+                largest_sum = current_sum 
+            end
+
+            if current_sum < 0
+                current_sum = 0
+            end
+
             i += 1
         end
+        largest_sum
     end
+
+    p largest_contiguous_subsum_2([2, 3, -6, 7, -6, 7, -1, 100])
+
+    
