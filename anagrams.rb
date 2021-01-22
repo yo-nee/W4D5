@@ -1,7 +1,24 @@
 require "byebug"
-# Phase 1 linear O(n)
 
-def first_anagram?(string, string2)
+# Phase 1 Anagram # permuation , factorial)(n!)
+    def first_anagram?(str, str_2) #str = "abc"   str2 = "cab"  
+    #     variations = str.split("").permutation.to_a
+    #     variations.include?(str_2.split(""))
+    # end
+        first_anagram?(str).include?(str2)
+    end
+p first_anagram?("abc", "cba")
+
+
+# Phase 2 Anagram 
+
+
+# Phase 3 Anagram 
+
+
+# Phase 4th Anagram linear O(n)
+
+def fourth_anagram?(string, string2)
     char_count(string) == char_count(string2) # 2n
 end
 
@@ -19,5 +36,3 @@ def char_count(string)
     variations
 end
 
-p first_anagram?("elvis", "lives")    #=> true
-p first_anagram?("gizmo", "sally")    #=> false
